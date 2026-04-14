@@ -745,7 +745,7 @@
                 });
             } else if (r < 0.7) {  // %30 normal duba (tek/çift)
                 const count = Math.random() < 0.4 ? 2 : 1;
-                const coneR = W * 0.0.041;
+                const coneR = W * 0.041;
                 for (let i = 0; i < count; i++) {
                     obstacles.push({ x: randRange(coneR * 2, W - coneR * 2), y: -coneR * 2, r: coneR, kind: 'cone' });
                 }
@@ -795,7 +795,7 @@
         // COLLECTIBLES
         let collectibles = [];
         let coinTimer = 0;
-        function spawnCoin() { const r = W * 0.041; collectibles.push({ x: randRange(r * 2, W - r * 2), y: -r * 2, r: r, spin: Math.random() * Math.PI * 2, bob: Math.random() * Math.PI * 2, collected: false, a: 1 }); }
+        function spawnCoin() { const r = W * 0.034; collectibles.push({ x: randRange(r * 2, W - r * 2), y: -r * 2, r: r, spin: Math.random() * Math.PI * 2, bob: Math.random() * Math.PI * 2, collected: false, a: 1 }); }
         function drawCoin(cn) { if (cn.collected && cn.a <= 0) return; ctx.save(); ctx.globalAlpha = cn.a; ctx.translate(cn.x, cn.y + Math.sin(cn.bob) * 3); ctx.scale(Math.abs(Math.cos(cn.spin * 0.5)) * 0.4 + 0.6, 1); const g = ctx.createRadialGradient(0, 0, 1, 0, 0, cn.r); g.addColorStop(0, '#fff'); g.addColorStop(0.5, '#4ade80'); g.addColorStop(1, '#16a34a'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, cn.r, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.beginPath(); ctx.arc(-2, -3, 3, 0, Math.PI * 2); ctx.fill(); ctx.font = `bold ${cn.r}px Arial`; ctx.fillStyle = '#14532d'; ctx.fillText('⚽', 0, 0); ctx.restore(); }
 
         let particles = [];
